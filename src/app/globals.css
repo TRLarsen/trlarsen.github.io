@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --accent: #2563eb;
+  --border: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --accent: #38bdf8;
+    --border: #1e293b;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+}
+
+.prose-custom {
+  @apply leading-relaxed;
+}
+
+.prose-custom p {
+  @apply inline;
+}
+
+.prose-custom strong {
+  @apply font-semibold text-foreground;
+}
+
+.prose-custom em {
+  @apply italic text-foreground/90;
+}
+
+/* Article Styling */
+.prose-article h1 { @apply text-4xl font-bold mt-12 mb-6 text-foreground; }
+.prose-article h2 { @apply text-2xl font-bold mt-10 mb-4 text-foreground border-b border-border/50 pb-2; }
+.prose-article h3 { @apply text-xl font-bold mt-8 mb-3 text-foreground; }
+.prose-article p { @apply mb-6 leading-relaxed; }
+.prose-article ul { @apply list-disc pl-6 mb-6 space-y-2; }
+.prose-article li { @apply text-foreground/80; }
+.prose-article strong { @apply font-semibold text-foreground; }
+.prose-article em { @apply italic text-foreground/90; }
+
+.section-container {
+  @apply max-w-4xl mx-auto px-6 py-12;
+}
+
+.card-academic {
+  @apply p-6 rounded-lg border border-border bg-white/5 dark:bg-white/5 hover:border-accent/50 transition-all;
+}

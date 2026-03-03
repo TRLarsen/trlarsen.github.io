@@ -1,0 +1,24 @@
+{
+  "experience": [
+    {
+      "role": "Research Assistant",
+      "organization": "BYU MAGICC Lab",
+      "period": "Current",
+      "description": "Working on the ROSflight autopilot ecosystem and the Rustflight project."
+    },
+    {
+      "role": "Research Assistant",
+      "organization": "BYU Configurable Computing Lab",
+      "period": "Summer 2026",
+      "description": "Incoming research position focusing on configurable hardware."
+    }
+  ],
+  "publications": [
+    {
+      "title": "ROSflight: A Lean Autopilot Ecosystem for UAVs",
+      "venue": "2025 Southwest Robotics Symposium",
+      "link": "https://openreview.net/pdf?id=bpGQIeWCUQ",
+      "authors": ["Tyler R. Larsen", "et al."]
+    }
+  ]
+}
