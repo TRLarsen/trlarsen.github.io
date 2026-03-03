@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FootnoteTooltip from "@/components/FootnoteTooltip";
 import { getMarkdownData, getAllContentFromFolder } from "@/lib/markdown";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -19,6 +20,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     return (
       <div className="min-h-screen flex flex-col bg-background text-foreground">
         <Navbar />
+        <FootnoteTooltip />
         
         <div className="flex-grow max-w-6xl mx-auto w-full px-6 pt-40 pb-20 flex gap-12">
           {/* Sidebar / Table of Contents */}

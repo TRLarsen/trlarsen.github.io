@@ -55,6 +55,36 @@ body {
 .prose-article strong { @apply font-semibold text-foreground; }
 .prose-article em { @apply italic text-foreground/90; }
 
+/* Footnotes Styling (Amodei-style Fixes) */
+.prose-article sup { 
+  @apply relative -top-[0.5em] text-[0.7em] font-bold text-accent px-0.5;
+}
+
+.prose-article .footnotes { 
+  @apply border-t border-border mt-24 pt-12 text-foreground/50;
+}
+
+.prose-article .footnotes ol { 
+  @apply list-decimal pl-6 space-y-4;
+}
+
+.prose-article .footnote-item { 
+  @apply text-sm leading-relaxed;
+}
+
+.prose-article .footnote-backref { 
+  @apply inline-block ml-2 text-accent no-underline hover:text-accent/80 transition-colors;
+}
+
+/* Tooltip Styling */
+.prose-footnote {
+  @apply text-sm leading-relaxed text-zinc-300;
+}
+
+.prose-footnote a { 
+  @apply text-accent hover:underline decoration-1 underline-offset-2;
+}
+
 .section-container {
   @apply max-w-4xl mx-auto px-6 py-12;
 }

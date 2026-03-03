@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
@@ -15,6 +16,7 @@ export async function getMarkdownData(fileName: string) {
   const matterResult = matter(fileContents);
   
   const processedContent = await remark()
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeStringify)
@@ -32,7 +34,7 @@ export async function getMarkdownData(fileName: string) {
       const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
       return { level, text, id };
     })
-    .filter(h => h.level > 1 && h.level < 4); // Only H2 and H3
+    .filter(h => h.level > 1 && h.level < 4);
 
   return {
     contentHtml,
@@ -53,6 +55,7 @@ export async function getAllContentFromFolder(folderName: string) {
     const matterResult = matter(fileContents);
     
     const processedContent = await remark()
+      .use(remarkGfm)
       .use(html)
       .process(matterResult.content);
     const contentHtml = processedContent.toString();
