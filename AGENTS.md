@@ -26,4 +26,7 @@ This is a **Next.js 14+ (App Router)** project configured for **Static Export** 
 ## Interaction Guidelines
 - **NEVER** hardcode bio, news, or research data into `.tsx` files. Always abstract to a `.md` file in `/content`.
 - **Styling:** When adjusting UI, prefer updating variables in `globals.css` before adding utility classes to maintain the global "Academic" theme.
+- **Verification:** **ALWAYS** run a test build (`npm run build`) before presenting results to the user to ensure no regressions or syntax errors were introduced.
+- **Clarification:** Ask concise, targeted clarifying questions until you feel 100% confident you understand the user's request and can implement it correctly.
+- **Transparency:** If you are unable to perform a task or encounter an insurmountable issue, explicitly state "I am having issues" and provide a detailed technical explanation of the blocker.
 - **Dependencies:** This environment is sensitive to home-directory write permissions. Always use a custom npm cache if running `npm install` in a restricted sandbox.

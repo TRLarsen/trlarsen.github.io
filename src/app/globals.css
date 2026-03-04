@@ -16,6 +16,10 @@
   }
 }
 
+html {
+  scroll-padding-top: 5rem;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -47,25 +51,39 @@ body {
 
 /* Article Styling */
 .prose-article h1 { @apply text-4xl font-bold mt-12 mb-6 text-foreground; }
-.prose-article h2 { @apply text-2xl font-bold mt-10 mb-4 text-foreground border-b border-border/50 pb-2; }
-.prose-article h3 { @apply text-xl font-bold mt-8 mb-3 text-foreground; }
+.prose-article h2 { @apply text-2xl font-bold mt-10 mb-4 text-foreground border-b border-border/50 pb-2 scroll-mt-24; }
+.prose-article h3 { @apply text-xl font-bold mt-8 mb-3 text-foreground scroll-mt-24; }
 .prose-article p { @apply mb-6 leading-relaxed; }
 .prose-article ul { @apply list-disc pl-6 mb-6 space-y-2; }
 .prose-article li { @apply text-foreground/80; }
 .prose-article strong { @apply font-semibold text-foreground; }
 .prose-article em { @apply italic text-foreground/90; }
 
+.prose-article a {
+  @apply text-accent hover:underline transition-colors;
+}
+
 /* Footnotes Styling (Amodei-style Fixes) */
 .prose-article sup { 
-  @apply relative -top-[0.5em] text-[0.7em] font-bold text-accent px-0.5;
+  @apply inline-block relative -top-[0.5em] text-[0.7em] font-bold text-accent px-0.5 scroll-mt-24;
 }
 
 .prose-article .footnotes { 
-  @apply border-t border-border mt-24 pt-12 text-foreground/50;
+  @apply border-t border-border mt-24 pt-12 text-foreground/70;
+  opacity: var(--footnote-opacity, 0.3);
+  transition: opacity 0.2s ease-out;
 }
 
 .prose-article .footnotes ol { 
   @apply list-decimal pl-6 space-y-4;
+}
+
+.prose-article .footnotes ol li {
+  @apply scroll-mt-24;
+}
+
+.prose-article .footnotes ol li::marker {
+  @apply text-foreground/30 font-medium;
 }
 
 .prose-article .footnote-item { 
@@ -73,7 +91,11 @@ body {
 }
 
 .prose-article .footnote-backref { 
-  @apply inline-block ml-2 text-accent no-underline hover:text-accent/80 transition-colors;
+  @apply inline-block ml-2 text-accent no-underline hover:text-accent/80 transition-colors font-bold;
+}
+
+.prose-article .footnotes a:not(.footnote-backref) {
+  @apply text-accent hover:underline decoration-1 underline-offset-2 transition-colors;
 }
 
 /* Tooltip Styling */

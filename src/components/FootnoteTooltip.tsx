@@ -17,18 +17,15 @@ export default function FootnoteTooltip() {
   useEffect(() => {
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Look for the link with data-footnote-ref
       const link = target.closest("a[data-footnote-ref]") as HTMLAnchorElement;
       
       if (!link) return;
       
-      const footnoteId = link.hash.substring(1); // e.g. "user-content-fn-1"
-      // remark-gfm adds "user-content-" prefix to IDs during some processing steps
+      const footnoteId = link.hash.substring(1);
       const footnoteEl = document.getElementById(footnoteId);
       
       if (!footnoteEl) return;
 
-      // Extract content, removing the backlink
       const clone = footnoteEl.cloneNode(true) as HTMLElement;
       const backlink = clone.querySelector(".footnote-backref");
       if (backlink) backlink.remove();
@@ -64,11 +61,40 @@ export default function FootnoteTooltip() {
     };
   }, []);
 
+  useEffect(() => {
+    const footnotes = document.querySelector(".footnotes") as HTMLElement;
+    if (!footnotes) return;
+
+    const handleScroll = () => {
+      const rect = footnotes.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // We start the fade when the footnotes section is at 95% of the viewport (just appearing)
+      // We reach 100% opacity when the top of the section is at 50% of the viewport height.
+      const start = viewportHeight * 0.95; 
+      const end = viewportHeight * 0.5;   
+      
+      let opacity = 0.3;
+      if (rect.top < start) {
+        // Calculate the ratio of how far we are from the start to the end
+        const progress = (start - rect.top) / (start - end);
+        // Map 0-1 to 0.3-1.0
+        opacity = 0.3 + (Math.min(Math.max(progress, 0), 1) * 0.7);
+      }
+      
+      footnotes.style.setProperty("--footnote-opacity", opacity.toString());
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const startCloseTimer = () => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setTooltip(null);
-    }, 300); // Slightly longer window to reach the box
+    }, 300);
   };
 
   const cancelCloseTimer = () => {
@@ -96,7 +122,6 @@ export default function FootnoteTooltip() {
           dangerouslySetInnerHTML={{ __html: tooltip.content }} 
         />
       </div>
-      {/* Arrow */}
       <div className="absolute -top-1.5 left-[15%] w-3 h-3 bg-zinc-800 border-l border-t border-zinc-700 rotate-45" />
     </div>,
     document.body
