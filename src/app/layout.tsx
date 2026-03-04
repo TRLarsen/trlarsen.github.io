@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://trlarsen.github.io"),
   title: "Tyler R. Larsen | Computer Engineering & Robotics",
   description: "Portfolio of Tyler R. Larsen, Computer Engineering student and researcher.",
 };
