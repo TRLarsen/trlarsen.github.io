@@ -18,7 +18,7 @@ This is a **Next.js 14+ (App Router)** project configured for **Static Export** 
 ### 3. Deployment
 - **Platform:** GitHub Pages.
 - **CI/CD:** Managed via `.github/workflows/deploy.yml`.
-- **Pathing:** Uses a conditional `basePath` in `next.config.mjs` to handle the `/portfolio_site` sub-directory on GitHub while staying at the root for local development.
+- **Pathing:** Deployed as a User Page (`trlarsen.github.io`), served at the root (`/`). No `basePath` or `assetPrefix` required.
 
 ### 4. Interactive Components
 - **Footnote System:** Uses `remark-gfm` and a custom `FootnoteTooltip.tsx`. The tooltip uses a "grace period" timer to stay open during mouse transition from the text to the popup.
