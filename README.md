@@ -19,3 +19,19 @@ The content (Bio, News, Research) is maintained by Tyler R. Larsen. To update th
 3. Commit and push to `main`.
 
 Refer to [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed content templates.
+
+## 💻 Local Preview & Testing
+To preview your changes locally before pushing:
+
+1. **Development Server (Real-time updates):**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to preview changes in real-time.
+
+2. **Production Export Preview:**
+   To verify the exact static build that will deploy to GitHub Pages:
+   ```bash
+   npm run build
+   npx serve out
+   ```

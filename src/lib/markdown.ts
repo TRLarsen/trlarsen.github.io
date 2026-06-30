@@ -60,10 +60,22 @@ export async function getAllContentFromFolder(folderName: string) {
       .process(matterResult.content);
     const contentHtml = processedContent.toString();
     
+    // Parse authors markdown if present
+    let authorsHtml = "";
+    if (matterResult.data.authors && Array.isArray(matterResult.data.authors)) {
+      const joinedAuthors = matterResult.data.authors.join(", ");
+      const processedAuthors = await remark()
+        .use(remarkGfm)
+        .use(html)
+        .process(joinedAuthors);
+      authorsHtml = processedAuthors.toString().trim().replace(/^<p>|<\/p>$/g, "");
+    }
+    
     return {
       id: fileName.replace(/\.md$/, ""),
       contentHtml,
       ...(matterResult.data as any),
+      authorsHtml,
     };
   }));
   

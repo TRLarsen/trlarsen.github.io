@@ -26,15 +26,23 @@ export default async function Research() {
                     {pub.title}
                   </a>
                 </h3>
-                <p className="text-sm text-foreground/60 leading-relaxed">
-                  {pub.authors?.join(", ")}
-                </p>
+                {pub.authorsHtml ? (
+                  <p 
+                    className="text-sm text-foreground/60 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: pub.authorsHtml }}
+                  />
+                ) : (
+                  <p className="text-sm text-foreground/60 leading-relaxed">
+                    {pub.authors?.join(", ")}
+                  </p>
+                )}
                 <p className="text-sm italic text-foreground/40">
                   {pub.venue}
                 </p>
-                <p className="text-sm text-foreground/60 leading-relaxed pt-2">
-                  {pub.content}
-                </p>
+                <div 
+                  className="text-sm text-foreground/60 leading-relaxed pt-2 prose-custom"
+                  dangerouslySetInnerHTML={{ __html: pub.contentHtml }}
+                />
                 <div className="pt-2">
                   <a href={pub.link} className="text-xs font-bold uppercase tracking-wider text-accent border-b border-accent/30 pb-0.5 hover:border-accent transition-all">
                     Link
