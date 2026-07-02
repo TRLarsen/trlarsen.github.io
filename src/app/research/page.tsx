@@ -12,7 +12,7 @@ export default async function Research() {
         <header className="space-y-4">
           <h1 className="text-4xl font-bold tracking-tight">Research</h1>
           <p className="text-lg text-foreground/60 max-w-2xl font-serif">
-            My work focuses on autopilot ecosystems, safety-critical systems, and UAV autonomy.
+            My work focuses on understanding and improving safety and reliability of embedded systems.
           </p>
         </header>
 

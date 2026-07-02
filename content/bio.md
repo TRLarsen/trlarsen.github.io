@@ -1,8 +1,8 @@
 ---
 name: Tyler R. Larsen
-role: Computer Engineering Student @ BYU
+role: Computer Engineering RA @ BYU
 location: Provo, UT
-email: tylerrl2@byu.edu
+email: trlarsen713@gmail.com
 github: https://github.com/TRLarsen
 linkedin: https://www.linkedin.com/in/tyler-r-larsen/
 ---
